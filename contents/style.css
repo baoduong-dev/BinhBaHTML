@@ -1177,7 +1177,7 @@ footer {
         float: left;
         padding-top: 5px; }
     .detail-page .content .menu-food {
-      margin-bottom: 20px; }
+      margin-bottom: 30px; }
       .detail-page .content .menu-food ul li {
         margin-bottom: 8px; }
         .detail-page .content .menu-food ul li:before {
@@ -1197,13 +1197,13 @@ footer {
         line-height: 1.2;
         margin-bottom: 20px;
         display: block;
-        color: #008b7c; }
+        color: #007768; }
         .detail-page .content .step-tour.step-tour-day .step .step-day span:before {
           display: inline-block;
           content: '\f017';
           font-family: FontAwesome;
           font-size: 20px;
-          color: #008b7c;
+          color: #007768;
           margin-right: 10px; }
       .detail-page .content .step-tour.step-tour-day .step .step-day-item {
         padding-left: 15px;
