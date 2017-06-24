@@ -138,6 +138,30 @@
         
     };
 
+    //copyright when copy text page
+    function copyright() {
+        //Get the selected text and append the extra info
+        var selection = window.getSelection(),
+            website = 'www.binhbatoday.com', //website
+            pagelink = '. Nguồn từ: ' + website, // text
+            copytext = selection + pagelink,
+            newdiv = document.createElement('div');
+
+        //hide the newly created container
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+
+        //insert the container, fill it with the extended text, and define the new selection
+        document.body.appendChild(newdiv);
+        newdiv.innerHTML = copytext;
+        selection.selectAllChildren(newdiv);
+
+        window.setTimeout(function () {
+            document.body.removeChild(newdiv);
+        }, 100);
+    }
+
+
     //scroll totop
     $(document).on('scroll', function () {
 
@@ -146,7 +170,7 @@
         } else {
             $('.totop').removeClass('active');
         }
-    });
+    }).on('copy', copyright);
 
     $('.totop').on('click', scrollToTop);
 
@@ -200,6 +224,7 @@
         var $url = $('link[rel="canonical"]').attr('href'); 
         //initialize social share count
         socialShare($url);
+        console.log($url);
     }
 
     // neu trang ton tai collapse group
@@ -227,7 +252,7 @@
                     // lay gia tri link cua moi item
                     $url = $this.parents('.blog-item').find('.btn-view-more').attr('href');
                 
-                var fbUrl = 'https://graph.facebook.com/v2.7/',//api facebook
+                var fbUrl = 'https://graph.facebook.com/',//api facebook
                     glUrl = 'https://clients6.google.com/rpc', //api google
                     fbApp = '1704455663209298|c865d132445ba4ce628e7fae8bcb9a2a';//app ID|app Secret
 
@@ -300,6 +325,22 @@
             })
             }
         }
+
+        //for detail-page, [data-scroll] clicked
+        $('a[data-scroll]').on('click', function(e) {
+            e.preventDefault();
+
+            var id = $(this).attr('data-scroll');
+            if (id.length !== 0) {
+                return $('body').animate({
+                    scrollTop: $('#'+id).offset().top - 100
+                }, 500);
+            } else {
+                return console.log('Not Found '+id);
+            }
+
+            // return false;
+        })
 
     
 }());    
